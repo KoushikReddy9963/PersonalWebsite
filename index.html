@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url(img/back5.jpg);
+        }
+
+        .dark-mode {
+            background: none;
+        }
+
+        .navbar,
+        .footer {
+            background-color: rgba(248, 249, 250, 0.8);
+            transition: background-color 0.5s, color 0.5s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .navbar,
+        .dark-mode .footer {
+            background-color: #333;
+        }
+
+
+        .navbar,
+        .footer {
+            background-color: #f8f9fa;
+            transition: background-color 0.5s, color 0.5s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+            color: #555;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: black;
+            transition: width 0.3s ease;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: #000;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card {
+            transition: background-color 0.5s, color 0.5s, box-shadow 0.3s, transform 0.3s ease;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            margin-top: 0.8rem;
+            font-size: 1.0rem;
+            line-height: 1.7;
+        }
+
+        .card-text {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .lead {
+            line-height: 1.8;
+            font-weight: 350;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-content img {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ddd;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .about-content img:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-content div {
+            max-width: 950px;
+        }
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:focus {
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body:not(.dark-mode) .btn-primary {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body.dark-mode .btn-primary {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .btn-primary {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-btn:focus {
+            outline: none;
+        }
+
+        /* Bio toggle details */
+        #bio-details {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            font-size: 1.1rem;
+        }
+
+        #bio-btn {
+            margin-top: 10px;
+        }
+
+        #coding img {
+            transition: transform 0.3s ease;
+            width: 100px;
+            margin: 20px;
+        }
+
+        #coding img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer span {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .dark-mode {
+            background-color: #181818;
+            color: #fff;
+        }
+
+        .dark-mode .navbar,
+        .dark-mode .footer {
+            background-color: #333;
+        }
+
+        .dark-mode .card {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .dark-mode .navbar a.nav-link,
+        .dark-mode .navbar-brand,
+        .dark-mode .footer span {
+            color: #fff;
+        }
+
+        .dark-mode .about-content img {
+            border-color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content img {
+                margin-bottom: 20px;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="background-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    <button class="toggle-btn" id="toggle-btn">&#9728;</button>
+                </div>
+            </div>
+        </nav>
+
+        <section id="about" class="p-4">
+            <div class="container">
+                <h1 class="mb-4">About Me</h1>
+                <div class="about-content"">
+                <img src=" img/OG.jpeg" alt="Your Image" class="img-fluid rounded-circle" style="width: 250px;">
+                    <div>
+                        <p class="lead">Hi, My name is <b>Yennam Koushik Reddy</b>. I am a passionate developer with
+                            expertise in web development and software engineering. I love building interactive and
+                            scalable
+                            applications.</p>
+                        <p class="lead">Currently, I am deepening my knowledge in other areas such as <b>Machine
+                                Learning
+                                (ML)</b>,
+                            <b>Blockchain</b>, and <b>Cybersecurity</b>. This enables me to work on projects that
+                            require
+                            strong expertise across multiple domains, from software development to securing applications
+                            and deploying intelligent systems.
+                        </p>
+                        <button id="bio-btn" class="btn btn-primary">Show Bio</button>
+                        <div id="bio-details" class="mt-3">
+                            <p>Date of Birth: December 14, 2004</p>
+                            <p>Place: Hyderabad, Telangana</p>
+                            <p>Country: India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Projects</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Nourish Nest</h5>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: Node.js, Express, MongoDB,
+                                    Mongoose,
+                                    CSS</p>
+                                <p class="card-text">Nutrient-rich meal planner with secure authentication, BMI
+                                    calculator,
+                                    and API-integrated recipe data.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">VirtuMeet</h5>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: React, Material-UI, Node.js, Web
+                                    Vitals, ZegoCloud
+                                </p>
+                                <p class="card-text">Seamless video and chat integration platform for 1000+ users with
+                                    screen sharing and performance tracking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Estate Craft</h5>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: MERN Stack (MongoDB, Express,
+                                    React,
+                                    Node.js)</p>
+                                <p class="card-text">Real estate management website featuring property listings, user
+                                    roles,
+                                    advertisements, and payment systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="coding" class="p-5">
+            <div class="container text-center">
+                <h2 class="mb-4">Coding & Competitive Programming</h2>
+                <p class="lead mb-4">I am a passionate competitive programmer, actively solving problems across multiple
+                    platforms.</p>
+                <p>Click on the logos below to visit my coding profiles.</p>
+                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                    <a href="https://leetcode.com/u/yennamkoushikreddy1234/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                            alt="LeetCode" style="width: 100px; margin: 20px;"></a>
+                    <a href="https://codeforces.com/profile/the_avenger9963" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Codeforces%27s_new_logo.png/330px-Codeforces%27s_new_logo.png"
+                            alt="Codeforces" style="width: 120px; margin: 20px;"></a>
+                    <a href="https://www.codechef.com/users/hulk39" target="_blank"><img
+                            src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/logo.svg"
+                            alt="CodeChef" style="width: 120px; margin: 20px;"></a>
+                    <a href="https://www.geeksforgeeks.org/user/yennamkoushicl6h/" target="_blank"><img
+                            src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+                            alt="GeeksforGeeks" style="width: 100px; margin: 20px;"></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="p-5">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.34203614626!2d78.24323163133776!3d17.412281015000232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1729685776731!5m2!1sen!2sin"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="mailto:yennamkoushikreddy1234@gmail.com" method="POST" enctype="text/plain">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social-media" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Connect with Me</h2>
+                <p class="text-center">Click on the logos below to visit my profiles.</p>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <a href="www.linkedin.com/in/saikoushikreddyyennam" target="_blank" class="mx-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn"
+                            style="height:20px; width: 60px;">
+                    </a>
+                    <a href="https://github.com/KoushikReddy9963" target="_blank" class="mx-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            alt="GitHub" style="height:20px; width: 55px;">
+                    </a>
+                    <a href="https://www.instagram.com/yennam_koushik_reddy?igsh=bmE1ZjhrcmZkb3gw" target="_blank"
+                        class="mx-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                            alt="Instagram" style="height:25px;width: 25px;">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="footer p-3 text-center">
+            <div class="container">
+                <span class="text-muted">&copy; 2024 Yennam Koushik Reddy. All rights reserved.</span>
+            </div>
+        </footer>
+
+
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+</body>
+
+</html>
