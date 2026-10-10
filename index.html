@@ -1,18 +1,81 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Sai Koushik Reddy Yennam | Software Engineer Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Yennam Sai Koushik Reddy: Application Engineer at IDFC FIRST Bank (B.Tech CSE, IIIT Sri City, 2022-2026), building backend and full-stack systems with Go, Java, Node.js, React, PostgreSQL, Redis, Docker and Kubernetes.">
+    <meta name="author" content="Yennam Sai Koushik Reddy">
+    <link rel="canonical" href="https://koushikreddyportfolio.vercel.app/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sai Koushik Reddy Yennam | Software Engineer Portfolio">
+    <meta property="og:description"
+        content="Backend and full-stack engineer. Experience at IDFC FIRST Bank and Akto.io, Amazon ML Summer School 2025, competitive programmer.">
+    <meta property="og:url" content="https://koushikreddyportfolio.vercel.app/">
+    <meta property="og:image" content="https://koushikreddyportfolio.vercel.app/img/OG.jpeg">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='45' font-size='38' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%23fff'%3EK%3C/text%3E%3C/svg%3E">
+
+    <!-- Decide the theme before first paint (stored choice, else OS preference) to avoid a flash. -->
+    <script>
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            var dark = false;
+            try {
+                var stored = localStorage.getItem('theme');
+                dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+            } catch (e) { /* storage unavailable: stay light */ }
+            root.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yennam Sai Koushik Reddy",
+        "url": "https://koushikreddyportfolio.vercel.app/",
+        "image": "https://koushikreddyportfolio.vercel.app/img/OG.jpeg",
+        "jobTitle": "Application Engineer",
+        "worksFor": { "@type": "Organization", "name": "IDFC FIRST Bank" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Information Technology, Sri City" },
+        "sameAs": [
+            "https://github.com/KoushikReddy9963",
+            "https://www.linkedin.com/in/koushikreddyys/"
+        ]
+    }
+    </script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-root-margin="-20% 0px -55% 0px"
+    data-bs-threshold="0.01,0.1,0.5,1">
+    <script>
+        if (document.documentElement.getAttribute('data-bs-theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+    <a class="visually-hidden-focusable skip-link" href="#main">Skip to main content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top" id="site-nav" aria-label="Primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Portfolio</a>
+            <a class="navbar-brand" href="#about">Koushik Reddy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,192 +83,610 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#coding">Coding</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#social-media">Let's Connect</a></li>
                 </ul>
-                <button class="toggle-btn" id="toggle-btn">☀</button>
+                <button class="toggle-btn" id="toggle-btn" type="button" aria-label="Switch to dark mode"
+                    aria-pressed="false">☀</button>
             </div>
         </div>
     </nav>
-    <section id="about" class="p-4">
-        <div class="container">
-            <h1 class="mb-4">About Me</h1>
-            <div class="about-content">
-                <img src="img/OG.jpeg" alt="Your Image" class="img-fluid rounded-circle" style="width: 250px;">
-                <div>
-                    <p class="lead">Hi! I’m Yennam Sai Koushik Reddy, a Computer Science student at IIIT Sri City. I
-                        enjoy coding, solving problems, and building web projects with tools like JavaScript, React.js,
-                        and Node.js.</p>
-                    <p class="lead">I’m part of my college’s Google Developer Groups as a Backend Developer, where I
-                        help organize events and guide others. I also love competing in coding contests on Codeforces,
-                        LeetCode, and CodeChef.</p>
-                    <p class="lead">Right now, I’m exploring Machine Learning, Blockchain, and Cybersecurity to create
-                        exciting projects and grow my skills.</p>
-                    <button id="bio-btn" class="btn btn-primary">Show Bio</button>
-                    <div id="bio-details" class="mt-3">
-                        <p>Date of Birth: December 14, 2004</p>
-                        <p>Place: Hyderabad, Telangana</p>
-                        <p>Country: India</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="projects" class="p-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Projects</h2>
-            <div class="row d-flex align-items-stretch">
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Estate Craft</h5>
-                            <p class="card-subtitle mb-2 text-muted">Tech Stack: React.js, Express.js, Node.js, MongoDB,
-                                Redux</p>
-                            <ul class="card-text">
-                                <li>Developed a real estate platform with 4 user roles (Admin, Employee, Seller, Buyer).
-                                </li>
-                                <li>Implemented secure authentication using JWT and Redux.</li>
-                                <li>Designed a responsive interface with listings, dashboards, and payments.</li>
-                                <li>Added admin analytics and favorite property features.</li>
-                            </ul>
+
+    <main id="main">
+        <section id="about" class="p-4">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="container">
+                <h1 class="mb-4">About Me</h1>
+                <div class="about-content">
+                    <img src="img/OG.jpeg" alt="Illustrated avatar of Yennam Sai Koushik Reddy"
+                        class="img-fluid rounded-circle tilt" width="250" height="250" fetchpriority="high">
+                    <div>
+                        <p class="lead">Hi! I’m Yennam Sai Koushik Reddy, an Application Engineer at IDFC
+                            FIRST Bank, where I joined as an intern and now work full time. I hold a B.Tech in Computer
+                            Science from IIIT Sri City (2022&ndash;2026, CGPA 9.17/10). I build backend and full-stack
+                            systems with Java, Go, Node.js, React.js, PostgreSQL, Redis, Docker and Kubernetes.</p>
+                        <p class="lead">I’m part of my college’s Google Developer Groups as a Backend Developer, where I
+                            help organize events and guide others. I also love competing in coding contests: I’m a
+                            Specialist on Codeforces (1435), 1857 on LeetCode (top 5.68%) and 3-star on CodeChef
+                            (1649).</p>
+                        <p class="lead">Beyond backend engineering I enjoy applied AI (selected for Amazon ML Summer
+                            School 2025) and API security (interned at Akto.io), and I’m still exploring Machine
+                            Learning, Blockchain and Cybersecurity to create exciting projects and grow my skills.</p>
+                        <button id="bio-btn" class="btn btn-primary" type="button" aria-expanded="false"
+                            aria-controls="bio-details">Show Bio</button>
+                        <div id="bio-details" class="mt-3" aria-hidden="true">
+                            <p>Date of Birth: December 14, 2004</p>
+                            <p>Place: Hyderabad, Telangana</p>
+                            <p>Country: India</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Nourish Nest</h5>
-                            <p class="card-subtitle mb-2 text-muted">Tech Stack: Express, MongoDB, EJS, CSS</p>
-                            <ul class="card-text">
-                                <li>Built a nutrition website with recipes and a nutrition index.</li>
-                                <li>Developed an admin panel with authentication and feedback.</li>
-                                <li>Included a BMI calculator for users.</li>
-                                <li>Integrated Axios for fast API calls (under 5 seconds).</li>
-                            </ul>
+
+                <div class="row g-3 mt-4 stats-row" data-stagger>
+                    <div class="col-6 col-lg-3 reveal">
+                        <div class="card tilt stat-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-value"><span data-count="9.17" data-decimals="2">9.17</span></div>
+                                <div class="stat-label">B.Tech CGPA (out of 10)</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">UNO Game DApp</h5>
-                            <p class="card-subtitle mb-2 text-muted">Tech Stack: Solidity, JavaScript, Socket.io,
-                                MetaMask</p>
-                            <ul class="card-text">
-                                <li>Created a decentralized UNO game with betting and rewards.</li>
-                                <li>Implemented automated winner selection and fee deduction.</li>
-                                <li>Built on Sepolia Test Network with real-time gameplay via Socket.io.</li>
-                                <li>Integrated MetaMask for secure transactions.</li>
-                            </ul>
+                    <div class="col-6 col-lg-3 reveal">
+                        <div class="card tilt stat-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-value"><span data-count="2">2</span></div>
+                                <div class="stat-label">Industry internships (IDFC FIRST Bank, Akto.io)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 reveal">
+                        <div class="card tilt stat-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-value"><span data-count="1857">1857</span></div>
+                                <div class="stat-label">LeetCode rating (top 5.68%)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 reveal">
+                        <div class="card tilt stat-card h-100">
+                            <div class="card-body text-center">
+                                <div class="stat-value">Top <span data-count="3000">3000</span></div>
+                                <div class="stat-label">Students in India picked for Amazon ML Summer School</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="coding" class="p-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Coding & Competitive Programming</h2>
-            <p class="lead mb-4 text-center">I am a passionate competitive programmer, actively solving problems across
-                multiple platforms.</p>
-            <p class="text-center">Click on the logos below to visit my coding profiles.</p>
-            <div class="d-flex justify-content-center align-items-center flex-wrap mb-5">
-                <a href="https://leetcode.com/u/yennamkoushikreddy1234/" target="_blank"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode"
-                        style="width: 100px; margin: 20px;"></a>
-                <a href="https://codeforces.com/profile/the_avenger9963" target="_blank"><img
-                        src="https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Codeforces%27s_new_logo.png/330px-Codeforces%27s_new_logo.png"
-                        alt="Codeforces" style="width: 120px; margin: 20px;"></a>
-                <a href="https://www.codechef.com/users/koushikreddyys" target="_blank"><img
-                        src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/logo.svg" alt="CodeChef"
-                        style="width: 120px; margin: 20px;"></a>
-                <a href="https://www.geeksforgeeks.org/user/yennamkoushicl6h/" target="_blank"><img
-                        src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png" alt="GeeksforGeeks"
-                        style="width: 100px; margin: 20px;"></a>
+        </section>
+
+        <section id="experience" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Experience &amp; Education</h2>
+                <ol class="timeline list-unstyled" data-stagger>
+                    <li class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="card tilt timeline-card shadow-sm">
+                            <div class="card-body">
+                                <div class="timeline-head">
+                                    <div>
+                                        <h3 class="card-title mb-1">Application Engineer</h3>
+                                        <p class="timeline-org mb-0">IDFC FIRST Bank</p>
+                                    </div>
+                                    <p class="timeline-meta text-muted mb-0">Jul 2026 &ndash; Present &middot;
+                                        Bangalore</p>
+                                </div>
+                                <ul class="card-text">
+                                    <li>Built a Copy Deployment feature in the React/Go Config Portal, generating
+                                        deployment YAML for 300+ microservices across 65+ projects and 11 environments
+                                        and eliminating manual YAML creation.</li>
+                                    <li>Implemented a source-to-destination workflow letting developers review, accept
+                                        or reject deployment values (memory, replicas, topics) before YAML generation,
+                                        cutting configuration errors.</li>
+                                    <li>Engineered reusable Go data structures with typed value metadata and integrated
+                                        React-side YAML processing to preserve structured configurations while
+                                        supporting environment-specific overrides.</li>
+                                </ul>
+                                <ul class="tag-list list-unstyled" aria-label="Technologies used">
+                                    <li>Go</li>
+                                    <li>React</li>
+                                    <li>YAML</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="card tilt timeline-card shadow-sm">
+                            <div class="card-body">
+                                <div class="timeline-head">
+                                    <div>
+                                        <h3 class="card-title mb-1">Application Engineer Intern</h3>
+                                        <p class="timeline-org mb-0">IDFC FIRST Bank</p>
+                                    </div>
+                                    <p class="timeline-meta text-muted mb-0">Jan 2026 &ndash; Jun 2026 &middot;
+                                        Bangalore</p>
+                                </div>
+                                <ul class="card-text">
+                                    <li>Redesigned client onboarding for the Core Banking Config Portal by migrating
+                                        client configurations from Kubernetes deployment manifests to PostgreSQL, so new
+                                        clients can be onboarded without infrastructure changes or service
+                                        redeployments.</li>
+                                    <li>Built a centralized client authorization module managing Client IDs, Client
+                                        Secrets, API permissions and endpoint-level access controls (GET/POST/PUT), with
+                                        Redis-backed caching that cut credential retrieval latency from 9s to under
+                                        1s.</li>
+                                    <li>Delivered a production-style Movie Booking System simulation using React, Go
+                                        and MongoDB, with movie discovery, seat booking, user management, RBAC and
+                                        feature-toggle driven releases across DEV, QA and PROD environments.</li>
+                                    <li>Containerized services with Docker, automated deployments through Jenkins and
+                                        orchestrated workloads on Kubernetes; contributed to architecture design,
+                                        database migrations and release management workflows.</li>
+                                </ul>
+                                <ul class="tag-list list-unstyled" aria-label="Technologies used">
+                                    <li>Go</li>
+                                    <li>React</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Redis</li>
+                                    <li>MongoDB</li>
+                                    <li>Docker</li>
+                                    <li>Kubernetes</li>
+                                    <li>Jenkins</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="card tilt timeline-card shadow-sm">
+                            <div class="card-body">
+                                <div class="timeline-head">
+                                    <div>
+                                        <h3 class="card-title mb-1">Student Trainee</h3>
+                                        <p class="timeline-org mb-0">Amazon ML Summer School</p>
+                                    </div>
+                                    <p class="timeline-meta text-muted mb-0">Aug 2025 &ndash; Sept 2025 &middot; Remote
+                                    </p>
+                                </div>
+                                <ul class="card-text">
+                                    <li>Selected among the top 3000 students in India for intensive training on applying
+                                        Artificial Intelligence (AI) and Large Language Models (LLMs) to practical use
+                                        cases.</li>
+                                    <li>Completed advanced modules on Generative AI, Deep Neural Networks and
+                                        Reinforcement Learning, with technical sessions led by Amazon scientists.</li>
+                                </ul>
+                                <ul class="tag-list list-unstyled" aria-label="Topics covered">
+                                    <li>Generative AI</li>
+                                    <li>LLMs</li>
+                                    <li>Deep Neural Networks</li>
+                                    <li>Reinforcement Learning</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="card tilt timeline-card shadow-sm">
+                            <div class="card-body">
+                                <div class="timeline-head">
+                                    <div>
+                                        <h3 class="card-title mb-1">Software Engineer Intern &ndash; Backend</h3>
+                                        <p class="timeline-org mb-0">Akto.io</p>
+                                    </div>
+                                    <p class="timeline-meta text-muted mb-0">Jun 2025 &ndash; Aug 2025 &middot;
+                                        Bangalore &middot; Remote</p>
+                                </div>
+                                <ul class="card-text">
+                                    <li>Developed a Node.js server application with 15+ APIs, each supporting CRUD
+                                        operations and including 4+ bugs and vulnerabilities, to test the company’s
+                                        internal LLM Agent.</li>
+                                    <li>Converted the Node.js test suite into 5+ languages and frameworks, including
+                                        Java (Spring Boot), Python (Flask), Go and ASP.NET, using Swagger Codegen.</li>
+                                    <li>Created YAML-based security policies covering 5+ vulnerabilities and attacks
+                                        such as injection attacks and API rate limiting, verified by a Java backend for
+                                        threat detection, improving API security.</li>
+                                </ul>
+                                <ul class="tag-list list-unstyled" aria-label="Technologies used">
+                                    <li>Node.js</li>
+                                    <li>Java (Spring Boot)</li>
+                                    <li>Python (Flask)</li>
+                                    <li>Go</li>
+                                    <li>ASP.NET</li>
+                                    <li>Swagger Codegen</li>
+                                    <li>YAML</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="card tilt timeline-card shadow-sm">
+                            <div class="card-body">
+                                <div class="timeline-head">
+                                    <div>
+                                        <h3 class="card-title mb-1">B.Tech in Computer Science and Engineering</h3>
+                                        <p class="timeline-org mb-0">Indian Institute of Information Technology, Sri
+                                            City</p>
+                                    </div>
+                                    <p class="timeline-meta text-muted mb-0">Nov 2022 &ndash; May 2026 &middot; CGPA
+                                        9.17 / 10</p>
+                                </div>
+                                <p class="card-text mb-2">Relevant coursework</p>
+                                <ul class="tag-list list-unstyled" aria-label="Relevant coursework">
+                                    <li>Full Stack Development</li>
+                                    <li>Data Structures and Algorithms</li>
+                                    <li>OOP</li>
+                                    <li>Computer Networks &amp; Security</li>
+                                    <li>DBMS</li>
+                                    <li>Operating Systems</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                </ol>
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <div class="cube-container">
-                        <div class="cube">
-                            <div class="face front"></div>
-                            <div class="face back"></div>
-                            <div class="face left"></div>
-                            <div class="face right"></div>
-                            <div class="face top"></div>
-                            <div class="face bottom"></div>
+        </section>
+
+        <section id="skills" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Technical Skills</h2>
+                <div class="row g-4" data-stagger>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Languages</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>Java</li>
+                                    <li>C</li>
+                                    <li>C++</li>
+                                    <li>Go</li>
+                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Frontend</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>React.js</li>
+                                    <li>Redux</li>
+                                    <li>EJS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Backend</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>Node.js</li>
+                                    <li>Express.js</li>
+                                    <li>REST APIs</li>
+                                    <li>Microservices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Databases</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>MongoDB</li>
+                                    <li>PostgreSQL</li>
+                                    <li>SQL</li>
+                                    <li>Redis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">DevOps &amp; Cloud</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>Docker</li>
+                                    <li>Kubernetes</li>
+                                    <li>CI/CD</li>
+                                    <li>Jenkins</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4 reveal">
+                        <div class="card tilt skill-card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Tools &amp; Platforms</h3>
+                                <ul class="tag-list list-unstyled">
+                                    <li>Git</li>
+                                    <li>GitHub</li>
+                                    <li>Bitbucket</li>
+                                    <li>Postman</li>
+                                    <li>VS Code</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <h3 class="mt-5">Hackathons</h3>
-                    <ul class="rounded-circle">
-                        <li> <b>EduSynch's Tech Frontiers Challenge :</b> Secured 8th place among 300+ participants in
-                            Challenge and received a cash prize.</li>
-                        <br>
-                        <li><b>Naukri.com Scholarship & College Champion :</b> Earned AIR
-                            70,
-                            achieved College Rank 1, and received a cash prize.</li>
-                    </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Projects</h2>
+                <div class="row g-4 d-flex align-items-stretch" data-stagger>
+                    <div class="col-md-6 reveal">
+                        <div class="card tilt shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">EstateCraft</h3>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: React.js, CSS, Express.js, MongoDB,
+                                    Docker, Redis</p>
+                                <p class="project-date text-muted mb-0">Aug 2024 &ndash; May 2025</p>
+                                <ul class="card-text">
+                                    <li>Engineered a MERN stack real estate platform with role-based access for 4 roles
+                                        (Admin, Employee, Seller, Buyer), a responsive UI, property listings, analytics,
+                                        a payment gateway and advertisements.</li>
+                                    <li>Implemented JWT authentication, CI/CD pipelines via GitHub Actions and
+                                        Dockerized deployment.</li>
+                                    <li>Added Redis caching to cut dashboard latency by 50%.</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a class="btn btn-primary btn-sm"
+                                        href="https://github.com/KoushikReddy9963/RealEstate-Phase-1-Group46"
+                                        target="_blank" rel="noopener noreferrer"
+                                        aria-label="EstateCraft source code on GitHub">GitHub</a>
+                                    <a class="btn btn-primary btn-sm" href="https://estatecraft.vercel.app/"
+                                        target="_blank" rel="noopener noreferrer"
+                                        aria-label="EstateCraft live demo">Live</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="card tilt shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Text Line Segmentation &ndash; U-Net for OCR</h3>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: Python, TensorFlow, OpenCV, NumPy
+                                </p>
+                                <p class="project-date text-muted mb-0">Jan 2025 &ndash; May 2025</p>
+                                <ul class="card-text">
+                                    <li>Trained a U-Net deep learning model in TensorFlow to segment text lines in
+                                        historical manuscripts, enabling automated Optical Character Recognition
+                                        (OCR).</li>
+                                    <li>Built a data preprocessing pipeline on the U-DIADS-TL dataset with OpenCV to
+                                        optimize inputs for the neural network.</li>
+                                    <li>Achieved 42% pixel-wise accuracy at 0.75 IoU, outperforming baseline methods;
+                                        selected for the ICDAR 2025 competition.</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a class="btn btn-primary btn-sm"
+                                        href="https://github.com/KoushikReddy9963/Text-line-segmentation-of-ancient-Handwritten-manuscripts"
+                                        target="_blank" rel="noopener noreferrer"
+                                        aria-label="Text line segmentation source code on GitHub">GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="card tilt shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Nourish Nest</h3>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: EJS, CSS, Express.js, MongoDB</p>
+                                <p class="project-date text-muted mb-0">Jan 2024 &ndash; May 2024</p>
+                                <ul class="card-text">
+                                    <li>Created a diet planning platform with 6+ diet plans, recipe details, a nutrition
+                                        index and a personalized BMR calculator.</li>
+                                    <li>Integrated a secure admin panel, a user feedback system and Axios-based API
+                                        calls for real-time meal data retrieval in under 5 seconds.</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a class="btn btn-primary btn-sm"
+                                        href="https://github.com/KoushikReddy9963/Nourish-Nest-Phase-2"
+                                        target="_blank" rel="noopener noreferrer"
+                                        aria-label="Nourish Nest source code on GitHub">GitHub</a>
+                                    <a class="btn btn-primary btn-sm" href="https://nourishnest.vercel.app/"
+                                        target="_blank" rel="noopener noreferrer"
+                                        aria-label="Nourish Nest live demo">Live</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="card tilt shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">UNO Game DApp</h3>
+                                <p class="card-subtitle mb-2 text-muted">Tech Stack: Solidity, JavaScript, Socket.io,
+                                    MetaMask</p>
+                                <ul class="card-text">
+                                    <li>Created a decentralized UNO game with betting and rewards.</li>
+                                    <li>Implemented automated winner selection and fee deduction.</li>
+                                    <li>Built on Sepolia Test Network with real-time gameplay via Socket.io.</li>
+                                    <li>Integrated MetaMask for secure transactions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="contact" class="p-5">
-        <h2 class="text-center mb-4">Contact Me</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.34203614626!2d78.24323163133776!3d17.412281015000232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1729685776731!5m2!1sen!2sin"
-                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+        <section id="coding" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Coding &amp; Competitive Programming</h2>
+                <p class="lead mb-4 text-center">I am a passionate competitive programmer, actively solving problems
+                    across multiple platforms.</p>
+                <p class="text-center">Click on the logos below to visit my coding profiles.</p>
+                <div class="row g-3 justify-content-center mb-5 platform-grid" data-stagger>
+                    <div class="col-6 col-md-3 reveal">
+                        <a class="card tilt platform-card h-100 text-decoration-none"
+                            href="https://leetcode.com/u/yennamkoushikreddy1234/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LeetCode profile">
+                            <div class="card-body text-center">
+                                <span class="platform-logo"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                                        alt="LeetCode" loading="lazy"></span>
+                                <div class="platform-name">LeetCode</div>
+                                <div class="platform-stat">1857 &middot; Top 5.68%</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <a class="card tilt platform-card h-100 text-decoration-none"
+                            href="https://codeforces.com/profile/YsKoushikreddy" target="_blank"
+                            rel="noopener noreferrer" aria-label="Codeforces profile">
+                            <div class="card-body text-center">
+                                <span class="platform-logo"><img
+                                        src="https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Codeforces%27s_new_logo.png/330px-Codeforces%27s_new_logo.png"
+                                        alt="Codeforces" loading="lazy"></span>
+                                <div class="platform-name">Codeforces</div>
+                                <div class="platform-stat">Specialist &middot; 1435</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <a class="card tilt platform-card h-100 text-decoration-none"
+                            href="https://www.codechef.com/users/koushikreddyys" target="_blank"
+                            rel="noopener noreferrer" aria-label="CodeChef profile">
+                            <div class="card-body text-center">
+                                <span class="platform-logo"><img
+                                        src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/logo.svg"
+                                        alt="CodeChef" loading="lazy"></span>
+                                <div class="platform-name">CodeChef</div>
+                                <div class="platform-stat">3-star &middot; 1649</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <a class="card tilt platform-card h-100 text-decoration-none"
+                            href="https://www.geeksforgeeks.org/user/yennamkoushicl6h/" target="_blank"
+                            rel="noopener noreferrer" aria-label="GeeksforGeeks profile">
+                            <div class="card-body text-center">
+                                <span class="platform-logo"><img
+                                        src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+                                        alt="GeeksforGeeks" loading="lazy"></span>
+                                <div class="platform-name">GeeksforGeeks</div>
+                                <div class="platform-stat">Practice profile</div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <form action="mailto:yennamkoushikreddy1234@gmail.com" method="POST" enctype="text/plain">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="cube-container" aria-hidden="true">
+                            <div class="cube">
+                                <div class="face front"></div>
+                                <div class="face back"></div>
+                                <div class="face left"></div>
+                                <div class="face right"></div>
+                                <div class="face top"></div>
+                                <div class="face bottom"></div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="mt-5">Hackathons</h3>
+                        <ul class="achievement-list">
+                            <li><b>EduSynch's Tech Frontiers Challenge :</b> Secured 8th place among 300+ participants
+                                in Challenge and received a cash prize.</li>
+                            <li><b>Naukri.com Scholarship &amp; College Champion :</b> Earned AIR 70 in the Naukri.com
+                                Scholarship Exam, achieved College Rank 1, and received a cash prize.</li>
+                        </ul>
+                        <h3 class="mt-4">Achievements</h3>
+                        <ul class="achievement-list">
+                            <li><b>IIT Madras Reverse Coding :</b> Grand Finalist after clearing Round 1. <a
+                                    class="text-link"
+                                    href="https://drive.google.com/file/d/1fDCjmWYf6IzNwezQQDcAzqrQy1_On2Eo/view?usp=sharing"
+                                    target="_blank" rel="noopener noreferrer">View certificate</a></li>
+                            <li><b>CodeChef Starters 158 (Rated) Div 3 :</b> Global Rank 49 (top 1.8%) among 2,709
+                                participants.</li>
+                            <li><b>LeetCode Biweekly Contest 143 :</b> Global Rank 437 among 27,473 participants.</li>
+                            <li><b>Amazon ML Summer School 2025 :</b> Selected among the top 3000 students in India.
+                            </li>
+                            <li><b>ICDAR 2025 :</b> Text line segmentation model selected for the competition on the
+                                strength of its performance.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="social-media" class="p-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Connect with Me</h2>
-            <p class="text-center">Click on the logos below to visit my profiles.</p>
-            <div class="d-flex justify-content-center flex-wrap">
-                <a href="https://www.linkedin.com/in/koushikreddyys" target="_blank" class="mx-3"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn"
-                        style="height:20px; width: 60px;"></a>
-                <a href="https://github.com/KoushikReddy9963" target="_blank" class="mx-3"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"
-                        style="height:20px; width: 55px;"></a>
-                <a href="https://www.instagram.com/yennam_koushik_reddy?igsh=bmE1ZjhrcmZkb3gw" target="_blank"
-                    class="mx-3"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                        alt="Instagram" style="height:25px;width: 25px;"></a>
+        </section>
+
+        <section id="contact" class="p-5">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <iframe title="Map of Hyderabad, Telangana"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.34203614626!2d78.24323163133776!3d17.412281015000232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1729685776731!5m2!1sen!2sin"
+                            class="w-100" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="col-md-6">
+                        <form id="contact-form" action="mailto:yennamkoushikreddy1234@gmail.com" method="POST"
+                            enctype="text/plain" data-to="yennamkoushikreddy1234@gmail.com">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" autocomplete="name"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    autocomplete="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="3"
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="social-media" class="p-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Connect with Me</h2>
+                <p class="text-center">Click on the logos below to visit my profiles.</p>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <a href="https://www.linkedin.com/in/koushikreddyys/" target="_blank" rel="noopener noreferrer"
+                        class="mx-3" aria-label="LinkedIn profile"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn"
+                            style="height:20px; width: 60px;"></a>
+                    <a href="https://github.com/KoushikReddy9963" target="_blank" rel="noopener noreferrer"
+                        class="mx-3" aria-label="GitHub profile"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            alt="GitHub" style="height:20px; width: 55px;"></a>
+                    <a href="https://www.instagram.com/yennam_koushik_reddy?igsh=bmE1ZjhrcmZkb3gw" target="_blank"
+                        rel="noopener noreferrer" class="mx-3" aria-label="Instagram profile"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                            alt="Instagram" style="height:25px;width: 25px;"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer p-3 text-center">
         <div class="container">
-            <span class="text-muted">© 2024 Yennam Koushik Reddy. All rights reserved.</span>
+            <span class="text-muted">&copy; <span id="year">2026</span> Yennam Sai Koushik Reddy. All rights
+                reserved.</span>
         </div>
     </footer>
-    <script src="script.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

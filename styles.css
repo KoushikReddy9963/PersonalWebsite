@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Noto+Sans:wght@400;700&display=swap');
+/* Fonts (Poppins, Noto Sans) are now loaded via <link> in index.html so they no longer block CSS parsing. */
 
 body {
   background: url(img/back5.jpg);
@@ -8,6 +8,8 @@ body {
 
 .dark-mode {
   background-color: #181818;
+  /* The light constellation image used to show through behind white text in dark mode. */
+  background-image: none;
   color: #fff;
 }
 
@@ -174,15 +176,30 @@ body.dark-mode .btn-primary {
   transition: color 0.3s ease;
 }
 
-.toggle-btn:focus {
+.toggle-btn:focus:not(:focus-visible) {
   outline: none;
 }
 
+.toggle-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
 #bio-details {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  visibility: hidden;
+  transition: max-height 0.6s ease-in-out, opacity 1s ease-in-out, visibility 0s linear 1s;
   font-size: 1.1rem;
+}
+
+#bio-details.is-open {
+  max-height: 240px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 #bio-btn {
@@ -238,11 +255,11 @@ section {
   padding: 80px 0;
 }
 
-#about, #coding, #social-media {
+#about, #skills, #coding, #social-media {
   background-color: #f8f9fa;
 }
 
-.dark-mode #about, .dark-mode #coding, .dark-mode #social-media {
+.dark-mode #about, .dark-mode #skills, .dark-mode #coding, .dark-mode #social-media {
   background-color: #222;
 }
 
@@ -349,4 +366,387 @@ h3 {
 .dark-mode .face {
   background: black;
   border: 2px solid white;
+}
+
+/* =========================================================
+   2026 refresh: additions layered on top of the original theme.
+   Everything above is the original styling and is kept as-is
+   (apart from the small fixes noted inline).
+   ========================================================= */
+
+/* ---------- Tokens (light / dark) ---------- */
+:root {
+  --accent: #000;
+  --page-bg: #fafafa;
+  --line: rgba(0, 0, 0, 0.12);
+  --pill-bg: rgba(0, 0, 0, 0.06);
+  --glare: rgba(0, 0, 0, 0.06);
+  --timeline-line: rgba(0, 0, 0, 0.22);
+}
+
+.dark-mode {
+  --accent: #fff;
+  --page-bg: #181818;
+  --line: rgba(255, 255, 255, 0.2);
+  --pill-bg: rgba(255, 255, 255, 0.1);
+  --glare: rgba(255, 255, 255, 0.12);
+  --timeline-line: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Page chrome ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1100;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+  pointer-events: none;
+}
+
+.navbar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #000;
+}
+
+.dark-mode .nav-link.active {
+  color: #fff;
+}
+
+/* Bootstrap's toggler icon is a dark SVG; make it visible on the dark navbar. */
+.dark-mode .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dark-mode .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ---------- 3D hero: canvas point-sphere behind the About section ---------- */
+#about {
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#about .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 3D tilt (driven by script.js via --rx / --ry / --mx / --my) ---------- */
+.tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+}
+
+.card.tilt {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+}
+
+/* Keeps the original hover "grow" and layers the tilt on top of it. */
+.card.tilt:hover {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--hover-scale, 1.05));
+  will-change: transform;
+}
+
+.card.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--glare), transparent 60%);
+  transition: opacity 0.3s ease;
+}
+
+.card.tilt:hover::after {
+  opacity: 1;
+}
+
+.about-content img.tilt {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.stat-card .stat-value,
+.platform-card .platform-logo {
+  transform: translateZ(18px);
+}
+
+/* ---------- Scroll reveal (only hidden when JS is running) ---------- */
+.js .reveal {
+  opacity: 0;
+  transform: perspective(1000px) translateY(36px) rotateX(14deg);
+  transform-origin: 50% 100%;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Stats ---------- */
+.stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--bs-secondary-color);
+}
+
+/* ---------- Pills ---------- */
+ul.tag-list.list-unstyled {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+}
+
+ul.tag-list.list-unstyled li {
+  margin: 0;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  border: 1px solid var(--line);
+}
+
+/* ---------- Experience timeline ---------- */
+.timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 0 0 2.75rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.8rem;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--timeline-line);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 1.6rem;
+  left: calc(-2.75rem + 0.8rem + 1px - 7px);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--page-bg), 0 0 0 5px var(--timeline-line);
+}
+
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.25rem 1rem;
+}
+
+.timeline-org {
+  font-weight: 600;
+}
+
+.timeline-meta {
+  font-size: 0.95rem;
+}
+
+.timeline-card {
+  --hover-scale: 1.02;
+}
+
+.timeline-card .card-title {
+  font-size: 1.35rem;
+}
+
+/* ---------- Skills ---------- */
+.skill-card .card-title {
+  font-size: 1.25rem;
+}
+
+/* ---------- Projects ---------- */
+#projects .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-date {
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn-primary.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+}
+
+/* ---------- Coding platforms ---------- */
+.platform-card,
+.platform-card:hover {
+  color: inherit;
+}
+
+/* Logos are black-on-transparent, so they sit on a light chip in both themes. */
+.platform-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#coding .platform-logo img,
+#coding .platform-logo img:hover {
+  width: auto;
+  max-width: 100%;
+  height: 44px;
+  margin: 0;
+  object-fit: contain;
+  transform: none;
+}
+
+.platform-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.platform-stat {
+  font-size: 0.9rem;
+  color: var(--bs-secondary-color);
+}
+
+ul.achievement-list {
+  padding-left: 1.25rem;
+}
+
+ul.achievement-list li {
+  margin-bottom: 0.75rem;
+}
+
+.text-link,
+.text-link:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Contact / social ---------- */
+.dark-mode #contact iframe {
+  filter: invert(0.92) hue-rotate(180deg) contrast(0.9);
+}
+
+#social-media .d-flex a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#social-media .d-flex a:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* The auto-updating year sits inside the footer span; keep it the same colour as the sentence around it. */
+.footer #year {
+  color: inherit;
+}
+
+/* ---------- Reduced motion: no scroll animation, no auto-spin, no smooth scroll ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .reveal,
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cube {
+    animation: none;
+    transform: rotateX(-25deg) rotateY(35deg);
+  }
+
+  #bio-details {
+    transition: none;
+  }
 }
