@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio</title>
+    <meta name="description" content="Yennam Sai Koushik Reddy — Application Engineer focused on backend systems, developer tooling and cloud-native applications.">
+    <title>Yennam Sai Koushik Reddy | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
@@ -12,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Portfolio</a>
+            <a class="navbar-brand" href="#about">Koushik Reddy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,6 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#coding">Coding</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -33,25 +35,39 @@
         <div class="container">
             <h1 class="mb-4">About Me</h1>
             <div class="about-content">
-                <img src="img/OG.jpeg" alt="Your Image" class="img-fluid rounded-circle" style="width: 250px;">
+                <img src="img/OG.jpeg" alt="Yennam Sai Koushik Reddy" class="img-fluid rounded-circle" style="width: 250px;">
                 <div>
-                    <p class="lead">Hi! I’m Yennam Sai Koushik Reddy, a Computer Science student at IIIT Sri City. I
-                        enjoy coding, solving problems, and building web projects with tools like JavaScript, React.js,
-                        and Node.js.</p>
-                    <p class="lead">I’m part of my college’s Google Developer Groups as a Backend Developer, where I
-                        help organize events and guide others. I also love competing in coding contests on Codeforces,
-                        LeetCode, and CodeChef.</p>
-                    <p class="lead">Right now, I’m exploring Machine Learning, Blockchain, and Cybersecurity to create
-                        exciting projects and grow my skills.</p>
+                    <p class="lead">Hi! I'm Yennam Sai Koushik Reddy, a Computer Science and Engineering graduate from IIIT Sri City (2022–2026), with a CGPA of 9.17/10. I work on backend services, developer tooling, configuration systems and cloud-native applications.</p>
+                    <p class="lead">I'm an Application Engineer at IDFC FIRST Bank. Previously, I interned in backend engineering at Akto.io and participated in Amazon ML Summer School.</p>
+                    <p class="lead">My toolkit includes Go, C++, React, PostgreSQL, Redis, MongoDB, Docker, Kubernetes and CI/CD. I also enjoy competitive programming and exploring machine learning and LLMs.</p>
                     <button id="bio-btn" class="btn btn-primary">Show Bio</button>
                     <div id="bio-details" class="mt-3">
-                        <p>Date of Birth: December 14, 2004</p>
-                        <p>Place: Hyderabad, Telangana</p>
-                        <p>Country: India</p>
+                        <p>Education: B.Tech, Computer Science and Engineering — IIIT Sri City</p>
+                        <p>CGPA: 9.17/10</p>
+                        <p>Location: Bengaluru, India</p>
+                        <p>Email: <a href="mailto:saikoushikreddy.y22@iiits.in">saikoushikreddy.y22@iiits.in</a></p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+    <section id="experience" class="p-5">
+        <div class="container"><h2 class="text-center mb-4">Experience</h2><div class="row d-flex align-items-stretch">
+            <div class="col-md-4"><div class="card shadow-sm h-100"><div class="card-body"><h5 class="card-title">IDFC FIRST Bank</h5><p class="card-subtitle mb-2 text-muted">Application Engineer · 2026–Present</p><ul class="card-text">
+                <li>Migrated Core Banking Config Portal client configuration from Kubernetes manifests to PostgreSQL, enabling onboarding without infrastructure changes or redeployments.</li>
+                <li>Built centralized client authorization for client IDs, secrets, API permissions and endpoint-level GET/POST/PUT access.</li>
+                <li>Added Redis caching, reducing credential retrieval latency from 9 seconds to under 1 second.</li>
+                <li>Built a Go-based GoCD pipeline failure analyzer for microservice deployment pipelines.</li>
+            </ul></div></div></div>
+            <div class="col-md-4"><div class="card shadow-sm h-100"><div class="card-body"><h5 class="card-title">Akto.io</h5><p class="card-subtitle mb-2 text-muted">Backend Engineering Intern · 2025</p><ul class="card-text">
+                <li>Built a Node.js test server with 15+ CRUD APIs and intentionally vulnerable scenarios for evaluating an internal LLM agent.</li>
+                <li>Expanded test suites across Java/Spring Boot, Python/Flask, Go and ASP.NET.</li>
+                <li>Created YAML security policies for API vulnerability and attack scenarios.</li>
+            </ul></div></div></div>
+            <div class="col-md-4"><div class="card shadow-sm h-100"><div class="card-body"><h5 class="card-title">Amazon ML Summer School</h5><p class="card-subtitle mb-2 text-muted">Student Trainee · 2025</p><ul class="card-text">
+                <li>Selected among the top 3,000 students in India for machine-learning training.</li><li>Studied Generative AI, deep neural networks and reinforcement learning.</li>
+            </ul></div></div></div>
+        </div></div>
     </section>
     <section id="projects" class="p-5">
         <div class="container">
@@ -68,7 +84,7 @@
                                 </li>
                                 <li>Implemented secure authentication using JWT and Redux.</li>
                                 <li>Designed a responsive interface with listings, dashboards, and payments.</li>
-                                <li>Added admin analytics and favorite property features.</li>
+                                <li>Added admin analytics and favorite property features. Redis caching reduced dashboard latency by 50%.</li>
                             </ul>
                         </div>
                     </div>
@@ -76,13 +92,12 @@
                 <div class="col-md-4">
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Nourish Nest</h5>
-                            <p class="card-subtitle mb-2 text-muted">Tech Stack: Express, MongoDB, EJS, CSS</p>
+                            <h5 class="card-title">Text Line Segmentation — U-Net</h5>
+                            <p class="card-subtitle mb-2 text-muted">Tech Stack: Python, TensorFlow, OpenCV, NumPy</p>
                             <ul class="card-text">
-                                <li>Built a nutrition website with recipes and a nutrition index.</li>
-                                <li>Developed an admin panel with authentication and feedback.</li>
-                                <li>Included a BMI calculator for users.</li>
-                                <li>Integrated Axios for fast API calls (under 5 seconds).</li>
+                                <li>Trained a U-Net model to segment text lines in historical manuscripts.</li>
+                                <li>Built an OpenCV preprocessing pipeline using the U-DIADS-TL dataset.</li>
+                                <li>Achieved 0.75 IoU and was selected for the ICDAR 2025 competition.</li>
                             </ul>
                         </div>
                     </div>
@@ -90,14 +105,13 @@
                 <div class="col-md-4">
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
-                            <h5 class="card-title">UNO Game DApp</h5>
+                            <h5 class="card-title">Nourish Nest & UNO Game DApp</h5>
                             <p class="card-subtitle mb-2 text-muted">Tech Stack: Solidity, JavaScript, Socket.io,
                                 MetaMask</p>
                             <ul class="card-text">
-                                <li>Created a decentralized UNO game with betting and rewards.</li>
-                                <li>Implemented automated winner selection and fee deduction.</li>
-                                <li>Built on Sepolia Test Network with real-time gameplay via Socket.io.</li>
-                                <li>Integrated MetaMask for secure transactions.</li>
+                                <li>Built Nourish Nest with recipes, nutrition information, an admin panel and BMR calculator.</li>
+                                <li>Created a decentralized multiplayer UNO game with real-time gameplay.</li>
+                                <li>Integrated MetaMask and deployed the game to the Sepolia test network.</li>
                             </ul>
                         </div>
                     </div>
@@ -139,14 +153,15 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3 class="mt-5">Hackathons</h3>
+                    <h3 class="mt-5">Competitive Programming & Achievements</h3>
                     <ul class="rounded-circle">
-                        <li> <b>EduSynch's Tech Frontiers Challenge :</b> Secured 8th place among 300+ participants in
-                            Challenge and received a cash prize.</li>
+                        <li><b>LeetCode:</b> 1857 rating — top 5.68% globally (resume-listed).</li>
+                        <li><b>Codeforces:</b> 1435 rating — Specialist.</li><li><b>CodeChef:</b> 1649 rating — 3-star.</li>
+                        <li><b>CodeChef Starters 158:</b> Global rank 49 among 2,709 participants.</li>
+                        <li><b>LeetCode Biweekly Contest 143:</b> Global rank 437 among 27,473 participants.</li>
+                        <li><b>EduSynch Tech Frontiers Challenge:</b> 8th place among 300+ participants.</li>
                         <br>
-                        <li><b>Naukri.com Scholarship & College Champion :</b> Earned AIR
-                            70,
-                            achieved College Rank 1, and received a cash prize.</li>
+                        <li><b>Naukri.com Scholarship:</b> All India Rank 70, College Rank 1, and cash prize.</li><li><b>IIT Madras Reverse Coding:</b> Grand finalist after clearing Round 1.</li>
                     </ul>
                 </div>
             </div>
@@ -162,7 +177,7 @@
                         width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-md-6">
-                    <form action="mailto:yennamkoushikreddy1234@gmail.com" method="POST" enctype="text/plain">
+                    <form action="mailto:saikoushikreddy.y22@iiits.in" method="POST" enctype="text/plain">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required>
@@ -200,7 +215,7 @@
     </section>
     <footer class="footer p-3 text-center">
         <div class="container">
-            <span class="text-muted">© 2024 Yennam Koushik Reddy. All rights reserved.</span>
+            <span class="text-muted">© 2026 Yennam Sai Koushik Reddy. All rights reserved.</span>
         </div>
     </footer>
     <script src="script.js">
