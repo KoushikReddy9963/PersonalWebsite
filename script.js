@@ -1,35 +1,39 @@
-(() => {
-  'use strict';
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById('toggle-btn');
-  const themeColor = document.querySelector('meta[name="theme-color"]');
-  const year = document.getElementById('current-year');
-  const storedTheme = (() => {
-    try { return localStorage.getItem('portfolio-theme'); } catch (_) { return null; }
-  })();
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const setTheme = (theme) => {
-    const dark = theme === 'dark';
-    root.dataset.theme = dark ? 'dark' : 'light';
-    document.body.classList.toggle('dark-mode', dark);
-    if (toggleBtn) {
-      toggleBtn.setAttribute('aria-pressed', String(dark));
-      toggleBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-      toggleBtn.innerHTML = '<span aria-hidden="true">' + (dark ? '☀' : '☾') + '</span>';
-    }
-    if (themeColor) themeColor.setAttribute('content', dark ? '#11131b' : '#f8f9fa');
-  };
-  setTheme(storedTheme === 'dark' || (!storedTheme && prefersDark) ? 'dark' : 'light');
-  if (toggleBtn) toggleBtn.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    try { localStorage.setItem('portfolio-theme', next); } catch (_) { /* Storage can be disabled. */ }
+const toggleBtn = document.getElementById('toggle-btn');
+const bioBtn = document.getElementById('bio-btn');
+const bioDetails = document.getElementById('bio-details');
+
+if (toggleBtn) {
+  toggleBtn.setAttribute('aria-label', 'Toggle dark mode');
+  toggleBtn.addEventListener('click', () => {
+    const dark = document.body.classList.toggle('dark-mode');
+    toggleBtn.textContent = dark ? '☀' : '☾';
+    toggleBtn.setAttribute('aria-pressed', String(dark));
   });
-  if (year) year.textContent = String(new Date().getFullYear());
-  const nav = document.getElementById('navbarNav');
-  if (nav && window.bootstrap) {
-    nav.querySelectorAll('a.nav-link').forEach((link) => link.addEventListener('click', () => {
-      if (window.innerWidth < 992) window.bootstrap.Collapse.getOrCreateInstance(nav).hide();
-    }));
+}
+if (bioBtn && bioDetails) {
+  bioBtn.setAttribute('aria-controls', 'bio-details');
+  bioBtn.setAttribute('aria-expanded', 'false');
+  bioBtn.addEventListener('click', () => {
+    const isHidden = getComputedStyle(bioDetails).display === 'none';
+    bioDetails.style.display = isHidden ? 'block' : 'none';
+    bioDetails.style.opacity = isHidden ? '1' : '0';
+    bioBtn.setAttribute('aria-expanded', String(isHidden));
+    bioBtn.textContent = isHidden ? 'Hide Bio' : 'Show Bio';
+  });
+}
+const motionTargets = document.querySelectorAll('#about h1, #experience .card, #projects .card, #coding .row, #contact .row, #social-media .container');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('motion-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    motionTargets.forEach((element) => observer.observe(element));
+  } else {
+    motionTargets.forEach((element) => element.classList.add('motion-in'));
   }
-})();
+}
